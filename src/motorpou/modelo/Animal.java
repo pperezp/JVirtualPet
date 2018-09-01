@@ -98,9 +98,9 @@ public class Animal extends Thread implements Serializable {
 
     @Override
     public void run() {
-        /*Contador para que la energia suba
-        cuando el animal este duermiendo. 
-        La energia va a subir cada 5 segudos */
+        /*Contador para que la energía suba
+        cuando el animal esté duermiendo. 
+        La energía va a subir cada 5 segundos */
         int cont = 0;
 
         /*Inicio los hilos de los estados*/
@@ -112,7 +112,7 @@ public class Animal extends Thread implements Serializable {
 
         while (!interrumpido) {
             try {
-                if (!despierto) {//si esta dormido
+                if (!despierto) {//si está dormido
                     cont++;
                     if (cont == 5) {// si y pasaron 5 segundos                          
                         cont = 0;

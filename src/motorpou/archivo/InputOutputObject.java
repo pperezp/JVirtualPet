@@ -30,7 +30,7 @@ public class InputOutputObject {
             String[] carpetas = ruta.split("/");
             String archivo = carpetas[carpetas.length-1];
 
-            if(carpetas.length != 1){// si es != 1, quiere decir que quiere crear carpetas tambien, 
+            if(carpetas.length != 1){// si es != 1, quiere decir que quiere crear carpetas también, 
                 String rutaCarpetas = "";
                 for(String carpeta : carpetas){
                     /*si la carpeta es distinta al archivo, lo agrego a la ruta*/

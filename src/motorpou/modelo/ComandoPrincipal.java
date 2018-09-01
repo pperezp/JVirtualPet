@@ -90,9 +90,9 @@ public class ComandoPrincipal extends Thread {
             case "/velocidad": {
                 String velocidadNueva = comando.toLowerCase().trim().split(" ")[1].toLowerCase();
                 switch (velocidadNueva) {
-                    /*El problema lo tengo cuando paso de normal a rapido
-                        ya que si el hilo esta en pause por 5 minutos
-                        despues de esos 5 minutos recien cambia a rapido*/
+                    /*El problema lo tengo cuando paso de normal a rápido
+                        ya que si el hilo está en pause por 5 minutos
+                        después de esos 5 minutos recién cambia a rápido*/
 
 //                        case "rapida":{
 //                            animal.setVelocidad(Velocidad.RAPIDO);

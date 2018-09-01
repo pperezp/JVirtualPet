@@ -66,7 +66,7 @@ public class Estado extends Thread implements Serializable {
     private void disminuirVida() {
         if (vida != Estado.MUERTE && !aumentandoVida) {
             /*El !aumentandoVida es para que no disminuya
-            la vida cuando la esten aumentando. Por ejemplo
+            la vida cuando la estén aumentando. Por ejemplo
             cuando duerme*/
             System.out.println("Disminuyendo en 1-->" + this.nombre);
             vida = vida - 1;
