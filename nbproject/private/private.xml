@@ -15,5 +15,19 @@
             <file>file:/C:/Users/Patricio/Dropbox/Programación/JAVA/Java%20SE/juegos/motorPou/src/motorpou/Prueba4.java</file>
         </group>
         <group name="POO_2"/>
+        <group name="Clases">
+            <file>file:/home/prez/Desktop/JVirtualPet/src/motorpou/modelo/Animal.java</file>
+            <file>file:/home/prez/Desktop/JVirtualPet/src/motorpou/modelo/ComandoPrincipal.java</file>
+            <file>file:/home/prez/Desktop/JVirtualPet/src/motorpou/archivo/InputOutputObject.java</file>
+            <file>file:/home/prez/Desktop/JVirtualPet/src/main/Main.java</file>
+            <file>file:/home/prez/Desktop/JVirtualPet/src/reglas/Reglas.java</file>
+        </group>
+        <group name="JAVA_VERPERTINO">
+            <file>file:/home/prez/Desktop/JVirtualPet/src/motorpou/modelo/Animal.java</file>
+            <file>file:/home/prez/Desktop/JVirtualPet/src/motorpou/modelo/ComandoPrincipal.java</file>
+            <file>file:/home/prez/Desktop/JVirtualPet/src/main/Main.java</file>
+            <file>file:/home/prez/Desktop/JVirtualPet/src/motorpou/archivo/InputOutputObject.java</file>
+            <file>file:/home/prez/Desktop/JVirtualPet/src/reglas/Reglas.java</file>
+        </group>
     </open-files>
 </project-private>

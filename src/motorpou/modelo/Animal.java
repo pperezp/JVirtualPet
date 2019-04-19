@@ -15,7 +15,7 @@ public class Animal extends Thread implements Serializable {
 
     private final int MAXIMO_VIDA = 100;
     private final int MINIMO_VIDA = 1;
-    private int VELOCIDAD = Reglas.Velocidad.NORMAL;
+    
     private String nombre;
 
     private Estado comida;
@@ -32,10 +32,10 @@ public class Animal extends Thread implements Serializable {
     public Animal(String nombre) {
         this.nombre = nombre;
 
-        comida = new Estado(Estado.COMIDA, 2000 * VELOCIDAD);
-        salud = new Estado(Estado.SALUD, 12000 * VELOCIDAD);
-        diversion = new Estado(Estado.DIVERSION, 3000 * VELOCIDAD);
-        energia = new Estado(Estado.ENERGIA, 2500 * VELOCIDAD);
+        comida      = new Estado(Estado.COMIDA,     2000  * Reglas.VELOCIDAD);
+        salud       = new Estado(Estado.SALUD,      12000 * Reglas.VELOCIDAD);
+        diversion   = new Estado(Estado.DIVERSION,  3000  * Reglas.VELOCIDAD);
+        energia     = new Estado(Estado.ENERGIA,    2500  * Reglas.VELOCIDAD);
 
 //        /*ultra rapido*/
 //        int num = 10;
@@ -175,7 +175,7 @@ public class Animal extends Thread implements Serializable {
         System.out.println(diversion);
         System.out.println(energia);
         System.out.println("***********************");
-        System.out.println("Velocidad: " + (VELOCIDAD == 1 ? "Rápida" : "Normal"));
+        System.out.println("Velocidad: " + (Reglas.VELOCIDAD == Reglas.Velocidad.RAPIDO ? "Rápida" : "Normal"));
         System.out.println();
 //        System.out.println("Hora actual: "+formato.format(actual));
     }
@@ -193,7 +193,7 @@ public class Animal extends Thread implements Serializable {
 
     /*prueba*/
     public void setVelocidad(int velocidad) {
-        VELOCIDAD = velocidad;
+        Reglas.VELOCIDAD = velocidad;
         comida.setPause(2000 * velocidad);
         salud.setPause(12000 * velocidad);
         diversion.setPause(3000 * velocidad);

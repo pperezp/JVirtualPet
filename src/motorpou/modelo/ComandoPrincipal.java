@@ -14,9 +14,9 @@ import java.util.logging.Logger;
 public class ComandoPrincipal extends Thread {
 
     private boolean salir = false;
-    private Scanner scan = new Scanner(System.in);
+    private final Scanner scan = new Scanner(System.in);
     private String comando;
-    private Jugador jugador;
+    private final Jugador jugador;
 
     public ComandoPrincipal(Jugador jugador) {
         this.jugador = jugador;
@@ -41,7 +41,6 @@ public class ComandoPrincipal extends Thread {
     }
 
     private static void desplegarAyuda() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         System.out.println("Comandos disponibles: ");
         System.out.println();
         System.out.println("/salir");
@@ -57,7 +56,6 @@ public class ComandoPrincipal extends Thread {
     }
 
     public void ejecutar(String comando) throws FoodNotFoundException, NotEnoughMoneyException, LimitLifeException {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         Animal animal = jugador.getAnimal();
         String com = comando.toLowerCase().trim().split(" ")[0];
         switch (com) {
@@ -209,6 +207,7 @@ public class ComandoPrincipal extends Thread {
             }
             default: {
                 System.out.println("No se reconoce el comando: " + com);
+                desplegarAyuda();
             }
         }
     }

@@ -1,4 +1,4 @@
-package test;
+package main;
 
 import exceptions.LimitLifeException;
 import exceptions.FoodNotFoundException;
@@ -31,7 +31,7 @@ import motorpou.modelo.Rutas;
  *
  * @author pperezp
  */
-public class Test4 extends javax.swing.JFrame {
+public class Main extends javax.swing.JFrame {
     private final Jugador j1;
     private final ComandoPrincipal comandos ;
     private Thread hEstados;
@@ -40,7 +40,7 @@ public class Test4 extends javax.swing.JFrame {
     no crear un contador para cada uno*/
     private Map mapaColores;
     
-    public Test4() throws IOException, FileNotFoundException, ClassNotFoundException {
+    public Main() throws IOException, FileNotFoundException, ClassNotFoundException {
         initComponents();
         
         if(new File(Rutas.jugador).exists()){
@@ -83,6 +83,8 @@ public class Test4 extends javax.swing.JFrame {
         lblDinero = new javax.swing.JLabel();
         lblUltima = new javax.swing.JLabel();
         btnDormir = new javax.swing.JToggleButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtLog = new javax.swing.JEditorPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -187,6 +189,7 @@ public class Test4 extends javax.swing.JFrame {
             }
         });
 
+        listaComida.setBorder(javax.swing.BorderFactory.createTitledBorder("Comidas"));
         listaComida.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         listaComida.setLayoutOrientation(javax.swing.JList.HORIZONTAL_WRAP);
         jScrollPane2.setViewportView(listaComida);
@@ -201,17 +204,26 @@ public class Test4 extends javax.swing.JFrame {
 
         lblUltima.setText("[FECHA ÚLTIMA VEZ]");
 
+        btnDormir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/dormir.png"))); // NOI18N
+        btnDormir.setToolTipText("Dormir / Despertar");
+        btnDormir.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                btnDormirItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDinero, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblUltima, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                    .addComponent(lblEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                    .addComponent(lblDinero, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                    .addComponent(lblUltima, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                    .addComponent(btnDormir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -225,31 +237,29 @@ public class Test4 extends javax.swing.JFrame {
                 .addComponent(lblDinero)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblUltima)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnDormir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
-        btnDormir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/dormir.png"))); // NOI18N
-        btnDormir.setToolTipText("Dormir / Despertar");
-        btnDormir.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                btnDormirItemStateChanged(evt);
-            }
-        });
+        txtLog.setBorder(javax.swing.BorderFactory.createTitledBorder("Log"));
+        jScrollPane1.setViewportView(txtLog);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2)
-                    .addComponent(txtCmd))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnDormir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtCmd)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 775, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -258,14 +268,12 @@ public class Test4 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCmd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnDormir, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCmd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -289,7 +297,7 @@ public class Test4 extends javax.swing.JFrame {
             j1.setUltimaVez(Calendar.getInstance().getTime());
             InputOutputObject.escribirObjetoEn(j1, Rutas.jugador);
         } catch (IOException ex) {
-            Logger.getLogger(Test4.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formWindowClosing
 
@@ -338,9 +346,9 @@ public class Test4 extends javax.swing.JFrame {
             @Override
             public void run() {
                 try {
-                    new Test4().setVisible(true);
+                    new Main().setVisible(true);
                 } catch (        IOException | ClassNotFoundException ex) {
-                    Logger.getLogger(Test4.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -354,6 +362,7 @@ public class Test4 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JProgressBar jpComida;
     private javax.swing.JProgressBar jpDiversion;
@@ -369,6 +378,7 @@ public class Test4 extends javax.swing.JFrame {
     private javax.swing.JLabel lblUltima;
     private javax.swing.JList listaComida;
     private javax.swing.JTextField txtCmd;
+    private javax.swing.JEditorPane txtLog;
     // End of variables declaration//GEN-END:variables
 
     private void iniciarHiloAnimal() {
@@ -457,7 +467,7 @@ public class Test4 extends javax.swing.JFrame {
                             primeraVuelta = false;
                         Thread.sleep(1000);
                     } catch (InterruptedException ex) {
-                        Logger.getLogger(Test4.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             }
